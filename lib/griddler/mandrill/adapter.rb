@@ -18,6 +18,7 @@ module Griddler
             bcc: recipients(:bcc, event),
             from: full_email([ event[:from_email], event[:from_name] ]),
             subject: event[:subject],
+            headers: event[:headers].collect{|k, v| "#{k}: #{v}"}.join("\n\n"),
             text: event[:text] || '',
             html: event[:html] || '',
             raw_body: event[:raw_msg],
